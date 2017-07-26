@@ -10,7 +10,7 @@ configured to connect to the cluster.
 ## Setup
 Run following command to deploy etcd with GCP persistent volume.
 ```sh
-kubectl create -f statefulsets
+kubectl create -f statefulset/
 ```
 
 ## Verification
