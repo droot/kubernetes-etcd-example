@@ -1,7 +1,7 @@
-# Single Node Etcd Cluster with Persistent Storage (limited HA)
+# Single Node Etcd Cluster with Persistent Storage on K8s
 This document describes the steps to run a single instance Etcd cluster backed
-by persistent volume (Google Persistent disks). We use StatefulSet primitive to
-run Etcd so that it is stable with persistence across Pod (re)scheduling.
+by persistent volume (Google Persistent disks) on Kubernetes. We use StatefulSet
+primitive to run Etcd so that it is stable with persistence across Pod (re)scheduling.
 
 ## Prerequisites
 The steps below assume that you have a running Kubernetes cluster and kubectl is
@@ -21,7 +21,7 @@ kubectl get svc/etcd-svc statefulsets/etcd po/etcd-0 pvc/etcd-data-dir-etcd-0 -o
 ```
 
 You should see an output like this
-
+```
 NAME           TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE SELECTOR
 svc/etcd-svc   ClusterIP   10.11.254.21   <none>        2379/TCP   4h app=etcd
 
@@ -33,6 +33,7 @@ po/etcd-0   1/1       Running   0          3h        10.8.2.7   gke-cluster-1-de
 
 NAME                       STATUS    VOLUME                                   CAPACITY   ACCESSMODES   STORAGECLASS   AGE
 pvc/etcd-data-dir-etcd-0   Bound     pvc-8fd97ce7-7172-11e7-bf09-42010a800061 10Gi       RWO           standard       4h
+```
 
 
 ## Testing
